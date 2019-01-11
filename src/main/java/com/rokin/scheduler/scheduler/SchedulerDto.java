@@ -1,5 +1,8 @@
 package com.rokin.scheduler.scheduler;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import org.quartz.Job;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,13 +32,17 @@ public class SchedulerDto {
 	@NoArgsConstructor
 	@Builder(toBuilder = true)
 	public static class ScheduleDetails {
-		private int minutes;
-		private int hour;
+		@NotNull
+		private Integer minutes;
+		@NotNull
+		private Integer hour;
+		@NotNull
 		private ScheduleType scheduleType;
-		private int dayOfWeek; // Sunday is 1
-		private int dayOfMonth;
+		private Integer dayOfWeek; // Sunday is 1
+		private Integer dayOfMonth;
 		private Integer[] daysOfWeek;
-
+		@NotEmpty
+		private String timezone;
 	}
 
 }
